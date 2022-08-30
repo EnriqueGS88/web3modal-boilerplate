@@ -163,33 +163,8 @@ function App() {
   return (
     
     <>
-      <Text position="absolute" top={0} right="15px">
-        If you're in the sandbox, first "Open in New Window" ⬆️
-      </Text>
       <VStack justifyContent="center" alignItems="center" h="100vh">
-        <HStack marginBottom="10px">
-          <Text
-            margin="0"
-            lineHeight="1.15"
-            fontSize={["1.5em", "2em", "3em", "4em"]}
-            fontWeight="600"
-          >
-            Let's connect with
-          </Text>
-          <Text
-            margin="0"
-            lineHeight="1.15"
-            fontSize={["1.5em", "2em", "3em", "4em"]}
-            fontWeight="600"
-            sx={{
-              background: "linear-gradient(90deg, #1652f0 0%, #b9cbfb 70.35%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent"
-            }}
-          >
-            Web3Modal
-          </Text>
-        </HStack>
+
         <HStack>
           {!account ? (
             <Button onClick={connectWallet}>Connect Wallet</Button>

@@ -25,12 +25,8 @@ function SelectWalletModal( {isOpen, closeModal }) {
         <Modal isOpen={ isOpen } onClose={ closeModal } isCentered>
             <ModalOverlay />
             <ModalContent w="300px">
-                <ModalHeader>Select Wallet</ModalHeader>
-                <ModalCloseButton 
-                    _focus={ {
-                        boxShadow: "none"
-                    }}
-                />
+                <ModalHeader>Select Address</ModalHeader>
+                <ModalCloseButton />
                 <ModalBody paddingBottom="1.5rem">
                     <VStack>
                         <Button
@@ -49,11 +45,31 @@ function SelectWalletModal( {isOpen, closeModal }) {
                                     heigth={ 25 }
                                     borderRadius="3px"
                                 />
-                                <Text>Coinbase Wallet</Text>
+                                <Text>Coinbase</Text>
                             </HStack>
                         </Button>
                         
 
+                        <Button
+                            variant="outlie"
+                            onClick={ () => {
+                                activate( connectors.walletConnect);
+                                closeModal();
+                            }}
+                            w="100%"
+                        >
+                            <HStack w="100%" justifyContent="center">
+                                <Image
+                                    src="/cbw.png"
+                                    alt="Wallet Connect Logo"
+                                    width={ 25 }
+                                    heigth={ 25 }
+                                    borderRadius="3px"
+                                />
+                                <Text>Wallet Connect</Text>
+                            </HStack>
+                        </Button>
+                        
                         <Button
                             variant="outlie"
                             onClick={ () => {
@@ -91,7 +107,7 @@ function SelectWalletModal( {isOpen, closeModal }) {
                                     heigth={ 25 }
                                     borderRadius="3px"
                                 />
-                                <Text>Metamask</Text>
+                                <Text>Metamask Wallet</Text>
                             </HStack>
                         </Button>
                     </VStack>
