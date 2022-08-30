@@ -204,6 +204,7 @@ function App() {
                   <option value="3">Ropsten</option>
                   <option value="4">Rinkeby</option>
                   <option value="42">Kovan</option>
+                  <option value="137">Polygon</option>
                   <option value="1666600000">Harmony</option>
                   <option value="42220">Celo</option>
                 </Select>
