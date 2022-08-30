@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Kept only the components necessary to connect the wallet and show details of the connected address.
+
 ## Polyfill fixed
 
 Since the latest webpack update, polyfills need to be fixed manually.
