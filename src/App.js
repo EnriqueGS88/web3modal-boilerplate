@@ -163,6 +163,32 @@ function App() {
   return (
     
     <>
+
+    {account && (
+      <HStack justifyContent="flex-start" alignItems="flex-start">
+        <Box
+          maxW="sm"
+          borderWidth="1px"
+          borderRadius="lg"
+          overflow="hidden"
+          padding="10px"
+        >
+          <VStack>
+            <Select placeholder="Select network" onChange={handleNetwork}>
+              <option value="1">Ethereum</option>
+              <option value="137">Polygon</option>
+              <option value="5">Goerli</option>
+              <option value="4">Rinkeby</option>
+            </Select>
+            <Button onClick={switchNetwork} isDisabled={!network}>
+              Switch Network
+            </Button>
+          </VStack>
+        </Box>
+      </HStack>
+    )}
+
+
       <VStack justifyContent="center" alignItems="center" h="100vh">
 
         <HStack>
@@ -187,31 +213,6 @@ function App() {
           </Tooltip>
           <Text>{`Network ID: ${chainId ? chainId : "No Network"}`}</Text>
         </VStack>
-        {account && (
-          <HStack justifyContent="flex-start" alignItems="flex-start">
-            <Box
-              maxW="sm"
-              borderWidth="1px"
-              borderRadius="lg"
-              overflow="hidden"
-              padding="10px"
-            >
-              <VStack>
-                <Button onClick={switchNetwork} isDisabled={!network}>
-                  Switch Network
-                </Button>
-                <Select placeholder="Select network" onChange={handleNetwork}>
-                  <option value="3">Ropsten</option>
-                  <option value="4">Rinkeby</option>
-                  <option value="42">Kovan</option>
-                  <option value="137">Polygon</option>
-                  <option value="1666600000">Harmony</option>
-                  <option value="42220">Celo</option>
-                </Select>
-              </VStack>
-            </Box>
-          </HStack>
-        )}
         <Text>{error ? error.message : null}</Text>
       </VStack>
     </>
