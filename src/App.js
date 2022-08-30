@@ -26,13 +26,9 @@ function App() {
   const [ provider, setProvider ] = useState();
   const [ library, setLibrary ] = useState();
   const [ account, setAccount ]  = useState();
-  const [ signature, setSignature ]  = useState();
   const [ error, setError ] = useState();
   const [ chainId, setChainId ] = useState();
   const [ network, setNetwork  ] = useState();
-  const [ message, setMessage ]  = useState();
-  const [ signedMessage, setSignedMessage ] = useState();
-  const [ verified, setVerified ] = useState();
 
   const connectWallet = async() => {
     try {
@@ -52,11 +48,6 @@ function App() {
   const handleNetwork = ( e ) => {
     const id = e.target.value;
     setNetwork( Number( id) );
-  };
-
-  const handleInput = ( e ) => {
-    const msg = e.target.value;
-    setMessage( msg );
   };
 
   const switchNetwork = async () => {
@@ -79,40 +70,10 @@ function App() {
     }
   };
 
-  const signMessage = async () => {
-    if ( !library ) return;
-    try{
-      const signature = await library.provider.request( {
-        method: "personal_sign",
-        params: [ message, account ]
-      });
-      setSignedMessage( message );
-      setSignature( signature );
-    } catch ( error ) {
-      setError( error );
-    }
-  };
-
-  const verifyMessage = async () => {
-    if ( !library ) return;
-    try{
-      const verify = await library.provider.request( {
-        method: "personal_ecRecover",
-        params: [ signedMessage, signature ]
-      });
-      setVerified( verify === account.toLowerCase() );
-    } catch ( error ) {
-      setError( error );
-    }
-  };
-
   const refreshState = () => {
     setAccount();
     setChainId();
     setNetwork();
-    setMessage();
-    setSignature();
-    setVerified( undefined );
   };
 
   const disconnect = async () => {
@@ -157,38 +118,31 @@ function App() {
   }, [ provider ] );
 
 
-
-
-
   return (
-    
     <>
-
-    {account && (
-      <HStack justifyContent="flex-start" alignItems="flex-start">
-        <Box
-          maxW="sm"
-          borderWidth="1px"
-          borderRadius="lg"
-          overflow="hidden"
-          padding="10px"
-        >
-          <VStack>
-            <Select placeholder="Select network" onChange={handleNetwork}>
-              <option value="1">Ethereum</option>
-              <option value="137">Polygon</option>
-              <option value="5">Goerli</option>
-              <option value="4">Rinkeby</option>
-            </Select>
-            <Button onClick={switchNetwork} isDisabled={!network}>
-              Switch Network
-            </Button>
-          </VStack>
-        </Box>
-      </HStack>
-    )}
-
-
+      {account && (
+        <HStack position="absolute" top={0} right="15px">
+          <Box
+            maxW="sm"
+            borderWidth="1px"
+            borderRadius="lg"
+            overflow="hidden"
+            padding="10px"
+          >
+            <VStack>
+              <Select placeholder="Select network" onChange={handleNetwork}>
+                <option value="1">Ethereum</option>
+                <option value="137">Polygon</option>
+                <option value="5">Goerli</option>
+                <option value="4">Rinkeby</option>
+              </Select>
+              <Button onClick={switchNetwork} isDisabled={!network}>
+                Switch Network
+              </Button>
+            </VStack>
+          </Box>
+        </HStack>
+      )}
       <VStack justifyContent="center" alignItems="center" h="100vh">
 
         <HStack>
@@ -216,7 +170,6 @@ function App() {
         <Text>{error ? error.message : null}</Text>
       </VStack>
     </>
-
   );
 }
 
