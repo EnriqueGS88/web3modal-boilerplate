@@ -21,6 +21,8 @@ The fix was found in this article by [Alchemy](https://www.alchemy.com/blog/how-
 -- os-browserify
 -- url
 
+npm i crypto-browserify stream-browserify assert stream-http https-browserify os-browserify url
+
 3 - Create new file *config-overrides.js* in root directory and insert this snippet:
 ```sh
 const webpack = require('webpack'); 
