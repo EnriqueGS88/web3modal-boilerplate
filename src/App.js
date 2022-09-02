@@ -6,7 +6,6 @@ import {
   Text,
   HStack,
   Select,
-  Input,
   Box,
   Tooltip
 } from '@chakra-ui/react';
@@ -19,7 +18,7 @@ import { providerOptions } from './providerOptions';
 
 const web3Modal = new Web3Modal( {
   cacheProvider: true, // optional
-  providerOptions // required
+  providerOptions, // required,
 })
 
 function App() {
@@ -117,6 +116,10 @@ function App() {
     }
   }, [ provider ] );
 
+  const goDark = async () => {
+    await web3Modal.updateTheme( "dark" );
+  }
+
 
   return (
     <>
@@ -139,6 +142,7 @@ function App() {
               <Button onClick={switchNetwork} isDisabled={!network}>
                 Switch Network
               </Button>
+              <Button onClick={ goDark } >DarkMode</Button>
             </VStack>
           </Box>
         </HStack>
