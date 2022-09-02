@@ -46,6 +46,7 @@ function App() {
 
   const handleNetwork = ( e ) => {
     const id = e.target.value;
+    console.log("handleNetworkId = ", id );
     setNetwork( Number( id) );
   };
 
@@ -116,9 +117,6 @@ function App() {
     }
   }, [ provider ] );
 
-  const goDark = async () => {
-    await web3Modal.updateTheme( "dark" );
-  }
 
 
   return (
@@ -142,7 +140,6 @@ function App() {
               <Button onClick={switchNetwork} isDisabled={!network}>
                 Switch Network
               </Button>
-              <Button onClick={ goDark } >DarkMode</Button>
             </VStack>
           </Box>
         </HStack>
